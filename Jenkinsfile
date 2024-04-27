@@ -1,5 +1,8 @@
 pipeline {
   agent any
+   parameters {
+  choice choices: ['DEV', 'QA', 'UAT'], name: 'ENV'
+       }
    stages{
      stage("Checkout"){
              steps{
@@ -14,10 +17,20 @@ pipeline {
        stage("Deployment"){
 
                 steps{
-
-                    sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
-  
-                      }
+                Script {
+                   if [ $ENV = "DEV"];then
+                   sh 'echo "Deployed to DEV"'                   
+ sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
+                   elif [ $ENV = "QA" ];then
+                   sh 'echo "Deployed to QA"'
+                   sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
+            
+                   elif [ $ENV = "UAT"];then
+                   sh 'echo "Deployed to UAT"'
+                   sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
+                   fi                    
+  }
+                   }
                            }
         }
 }
