@@ -17,7 +17,7 @@ pipeline {
        stage("Deployment"){
 
                 steps{
-                Script {
+                
                   sh '''if  [  $ENV  =  "QA"  ];then
 echo "Deployed to QA"
 cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
@@ -29,7 +29,7 @@ echo "Deployed to UAT"
 cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps
 fi
 '''          
-  }
+  
                    }
                            }
         }
