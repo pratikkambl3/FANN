@@ -18,14 +18,14 @@ pipeline {
 
                 steps{
                 Script {
-                   if [ $ENV = "DEV"];then
+                   if [ env.ENV == "DEV"];then
                    sh 'echo "Deployed to DEV"'                   
  sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
-                   elif [ $ENV = "QA" ];then
+                   elif [ env.ENV == "QA" ];then
                    sh 'echo "Deployed to QA"'
                    sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
             
-                   elif [ $ENV = "UAT"];then
+                   elif [ env.ENV == "UAT"];then
                    sh 'echo "Deployed to UAT"'
                    sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
                    fi                    
