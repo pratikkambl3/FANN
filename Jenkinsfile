@@ -18,17 +18,17 @@ pipeline {
 
                 steps{
                 Script {
-                   if [ env.ENV == "DEV"];then
+                   if ( env.ENV == "DEV" );then
                    sh 'echo "Deployed to DEV"'                   
  sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
-                   elif [ env.ENV == "QA" ];then
+                   else ( env.ENV == "QA" );then
                    sh 'echo "Deployed to QA"'
                    sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
             
-                   elif [ env.ENV == "UAT"];then
+                   else ( env.ENV == "UAT" );then
                    sh 'echo "Deployed to UAT"'
                    sh 'cp target/FANN.war /home/vboxuser/Documents/DevopsTools/apache-tomcat-9.0.88/webapps'
-                   fi                    
+                                       
   }
                    }
                            }
