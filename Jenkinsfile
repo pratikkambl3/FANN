@@ -35,5 +35,10 @@ fi
   
                    }
                            }
+           stage("Notification"){
+                     steps{
+                              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#amazon', color: 'good', message: 'Welcome to jenkins slack notification', teamDomain: 'DEVOPS', tokenCredentialId: '198aa9be-1475-4586-ba77-716050239d16'
+                                 }
+                          }
         }
 }
