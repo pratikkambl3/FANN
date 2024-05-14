@@ -24,7 +24,7 @@ pipeline {
                 
                   sh '''if  [  $ENV  =  "QA"  ];then
 echo "Deployed to QA"
-scp target/FANN.war /home/pratikkambl3/Documents/Devops-Tools/apache-tomcat-9.0.89/webapps
+cp target/FANN.war /home/pratikkambl3/Documents/Devops-Tools/apache-tomcat-9.0.89/webapps
 
 elif  [$ENV = "DEV" ];then
 echo "Deployed to DEV"
@@ -39,10 +39,10 @@ fi
   
                    }
                            }
-           stage("Notification"){
-                     steps{
-                              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#amazon', color: 'good', message: 'Welcome to jenkins slack notification', teamDomain: 'DEVOPS', tokenCredentialId: '198aa9be-1475-4586-ba77-716050239d16'
-                                 }
-                          }
+ #          stage("Notification"){
+  #                   steps{
+   #                           slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#amazon', color: 'good', message: 'Welcome to jenkins slack notification', teamDomain: 'DEVOPS', tokenCredentialId: '198aa9be-1475-4586-ba77-716050239d16'
+#                                 }
+ #                         }
         }
 }
