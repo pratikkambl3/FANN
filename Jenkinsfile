@@ -14,8 +14,9 @@ pipeline {
        }
       stage("Build"){
                 steps{
- 			sh '/home/grras/project/apache-maven-3.9.6/bin/mvn install'
-                      }   
+                     sh '/home/pratikkambl3/Documents/Devops-Tools/apache-maven-3.9.6/bin/mvn install'
+
+			}   
                      }
        stage("Deployment"){
 
